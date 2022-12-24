@@ -22,7 +22,7 @@ public class Main {
     }
 
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
+    public void onServerStarting(final ServerStartingEvent event) {
         // Do something when the server starts
         LOGGER.info("Initialising i3-mc..");
     }

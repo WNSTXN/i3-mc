@@ -18,16 +18,16 @@ public class Workspace {
 
     public static void onKeyInput() {
         for (int i = 0; i < KeyBinding.workspaceKeyList.size(); i++) {
-            KeyMapping keyMap = KeyBinding.workspaceKeyList.get(i);
+            final KeyMapping keyMap = KeyBinding.workspaceKeyList.get(i);
             if (!keyMap.consumeClick()) return;
 
-            Minecraft minecraft = Minecraft.getInstance();
-            LocalPlayer localPlayer = minecraft.player;
+            final Minecraft minecraft = Minecraft.getInstance();
+            final LocalPlayer localPlayer = minecraft.player;
             if (localPlayer == null) return;
 
             
-            double rotationVector = localPlayer.getXRot();
-            Vec3 positionVector = localPlayer.position();
+            final double rotationVector = localPlayer.getXRot();
+            final Vec3 positionVector = localPlayer.position();
             workspaceMap.put(currentWorkspaceIndex, new Vec4(
                 positionVector.x,
                 positionVector.y,
@@ -36,7 +36,7 @@ public class Workspace {
             ));
             
             if (workspaceMap.containsKey(i)) {
-                Vec4 playerState = workspaceMap.get(i);
+                final Vec4 playerState = workspaceMap.get(i);
 
                 localPlayer.sendSystemMessage(Component.literal(String.format("/tp %f %f %f %f", 
                     playerState.getX(),

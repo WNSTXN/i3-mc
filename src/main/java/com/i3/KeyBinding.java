@@ -11,7 +11,7 @@ import net.minecraftforge.client.settings.KeyConflictContext;
 import net.minecraftforge.client.settings.KeyModifier;
 
 public class KeyBinding {
-    static IntStream workspaceIndices = IntStream.concat(IntStream.rangeClosed(1, 9), IntStream.of(0));
+    static final IntStream workspaceIndices = IntStream.concat(IntStream.rangeClosed(1, 9), IntStream.of(0));
 
     public static final List<KeyMapping> workspaceKeyList = workspaceIndices.mapToObj(workspaceIndex -> new KeyMapping(
         String.format("key.i3.workspace%d", workspaceIndex),

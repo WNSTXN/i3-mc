@@ -6,7 +6,7 @@ public class Vec4 {
     double z;
     double rotation;
 
-    public Vec4(double x, double y, double z, double rotation) {
+    public Vec4(final double x, final double y, final double z, final double rotation) {
         this.x = x;
         this.y = y;
         this.z = z;

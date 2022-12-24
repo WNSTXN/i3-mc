@@ -15,7 +15,7 @@ public class ClientEvents {
     @Mod.EventBusSubscriber(modid = Main.MODID, value = Dist.CLIENT)
     public static class ClientForgeEvents {
         @SubscribeEvent
-        public static void onKeyInput(Key event) {
+        public static void onKeyInput(final Key event) {
             Workspace.onKeyInput();
         }
     }
@@ -23,8 +23,8 @@ public class ClientEvents {
     @Mod.EventBusSubscriber(modid = Main.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModBusEvents {
         @SubscribeEvent
-        public static void onKeyRegister(RegisterKeyMappingsEvent event) {
-            for (KeyMapping keyMap : KeyBinding.workspaceKeyList) {
+        public static void onKeyRegister(final RegisterKeyMappingsEvent event) {
+            for (final KeyMapping keyMap : KeyBinding.workspaceKeyList) {
                 event.register(keyMap);
             }
         }
