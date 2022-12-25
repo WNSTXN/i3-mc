@@ -9,7 +9,6 @@ import com.i3.types.Vec4;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.phys.Vec3;
 
 public class Workspace {
@@ -38,12 +37,12 @@ public class Workspace {
             if (workspaceMap.containsKey(i)) {
                 final Vec4 playerState = workspaceMap.get(i);
 
-                localPlayer.sendSystemMessage(Component.literal(String.format("/tp %f %f %f %f", 
+                localPlayer.chat(String.format("/tp %f %f %f %f", 
                     playerState.getX(),
                     playerState.getY(),
                     playerState.getZ(),
                     playerState.getRotation()
-                )));
+                ));
             }
 
             Workspace.currentWorkspaceIndex = i;

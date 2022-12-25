@@ -6,26 +6,27 @@ import com.i3.handlers.Workspace;
 
 import net.minecraft.client.KeyMapping;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.InputEvent.Key;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.client.ClientRegistry;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+
 
 public class ClientEvents {
-    @Mod.EventBusSubscriber(modid = Main.MODID, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = Main.MODID, value = Dist.CLIENT)
     public static class ClientForgeEvents {
         @SubscribeEvent
-        public static void onKeyInput(final Key event) {
+        public static void onKeyInput() {
             Workspace.onKeyInput();
         }
     }
 
-    @Mod.EventBusSubscriber(modid = Main.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = Main.MODID, bus = Bus.MOD, value = Dist.CLIENT)
     public static class ClientModBusEvents {
         @SubscribeEvent
-        public static void onKeyRegister(final RegisterKeyMappingsEvent event) {
+        public static void onKeyRegister() {
             for (final KeyMapping keyMap : KeyBinding.workspaceKeyList) {
-                event.register(keyMap);
+                ClientRegistry.registerKeyBinding(keyMap);
             }
         }
     }
